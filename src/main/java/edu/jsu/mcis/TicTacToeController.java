@@ -1,7 +1,8 @@
 package edu.jsu.mcis;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 public class TicTacToeController implements ActionListener {
 
@@ -34,7 +35,7 @@ public class TicTacToeController implements ActionListener {
         /* Initialize model, view, and width */
 
         model = new TicTacToeModel(width);
-        view = new TicTacToeView();
+        view = new TicTacToeView(this, width);
         
     }
 
