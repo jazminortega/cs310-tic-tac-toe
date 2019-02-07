@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TicTacToeView {
     
     private final Scanner keyboard;
+    private TicTacToeMove move;
     
     /* CONSTRUCTOR */
 	
@@ -13,6 +14,7 @@ public class TicTacToeView {
         /* Initialize scanner (for console keyboard) */
         
         keyboard = new Scanner(System.in);
+         
         
     }
 	
@@ -22,8 +24,13 @@ public class TicTacToeView {
            Return as a TicTacToeMove object. */
         
         // INSERT YOUR CODE HERE
-
-        return null; // remove this line later!
+        System.out.println ("Enter the row and column numbers, separated by a space: ");
+       
+        int row = keyboard.nextInt();
+        int col = keyboard.nextInt();
+        move = new TicTacToeMove(row, col);
+        
+        return move;
 
     }
 
