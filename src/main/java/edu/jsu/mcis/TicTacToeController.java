@@ -1,11 +1,33 @@
 package edu.jsu.mcis;
 
-public class TicTacToeController {
+import java.awt.*;
+import javax.swing.*;
+
+public class TicTacToeController implements ActionListener {
 
     private final TicTacToeModel model;
     private final TicTacToeView view;
     
     /* CONSTRUCTOR */
+    public String getMarkAsString(int row, int col) {        
+    return (model.getMark(row, col).toString());        
+    }
+    
+    public TicTacToeView getView() {        
+        return view;        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        // INSERT YOUR CODE HERE
+        String button = ((JButton) event.getSource()).getName();
+        int row = button.charAt(6) -48;
+        int col = button.charAt(7) -48;
+        
+        model.makeMark(row, col);
+        JButton click = (JButton) event.getSource();
+        view.updateSquares(click, model, row, col);
+    }
 
     public TicTacToeController(int width) {
         
@@ -30,7 +52,7 @@ public class TicTacToeController {
         {
             
        
-            view.showBoard(model.toString());
+            //view.showBoard(model.toString());
             
             if (model.isXTurn())
                 System.out.println("Player 1 (X) Move: \n");
@@ -38,20 +60,21 @@ public class TicTacToeController {
                 System.out.println("Player 2 (O) Move: \n");
             
             
-            TicTacToeMove move = view.getNextMove(true);
+            //TicTacToeMove move = view.getNextMove(true);
             
-            boolean result = model.makeMark(move.getRow(), move.getCol());
+            //boolean result = model.makeMark(move.getRow(), move.getCol());
             
-           if(!result){
-            view.showInputError();
-           } 
+           //if(!result){
+           // view.showInputError();
+           //} 
             
         }
         
         /* After the game is over, show the final board and the winner */
 
         view.showResult(model.getResult().toString());
-        
+
+ 
 
 }
 }
